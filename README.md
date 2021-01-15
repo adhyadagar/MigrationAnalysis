@@ -63,7 +63,11 @@ Around seven migration indicators derived from the census tale, we construct eig
   
 ### 8. Hypothesis 8: Long term migrants migrate to districts with low level industries in contrast to short term migrants, who move to districts with service industries.
 
-
+## References
+1. Masoomali Fatehkia, Isabelle Tingzon, Ardie Orden, Stephanie Sy, Vedran Sekara,Manuel  Garcia-Herranz,  and  Ingmar  Weber.  2020.    Mapping  socioeconomicindicators using social media advertising data.EPJ Data Science9, 1 (2020).https://doi.org/10.1140/epjds/s13688-020-00235-w
+2. Dibyajyoti Goswami, Shyam Bihari Tripathi, Sansiddh Jain, Shivam Pathak, andAaditeshwar Seth. 2019. Towards building a district development model for Indiausing census data.COMPASS 2019 - Proceedings of the 2019 Conference on Computingand Sustainable Societies(2019), 259–271.   https://doi.org/10.1145/3314344.3332491
+3. Government of India. 2017.  India on the Move and Churning: New Evidence.Economic Survey 2016-17(2017), 21.
+4. Emilio  Zagheni,  Venkata  Rama,  Kiran  Garimella,  Ingmar  Weber,  and  Bog-dan  State.  [n.d.].    WWW  ’14  Companion.    ([n. d.]).www.oecd.org/about/membersandpartners/list-
 
 
 
