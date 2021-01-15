@@ -4,4 +4,4 @@ Around seven migration indicators derived from the census tale, we construct eig
 ## Contents-
  
 1. Code for testing hypotheses
-2. Document containing all hypotheses and results of hypotheses testing(z-tests, t-tests, ANOVA etc)
+
