@@ -1,4 +1,6 @@
-##Analysis done at District level
+## Analysis done at District level
+
+## Methodology
 
 It's always difficult to interpret the overall change in socioeconomic conditions specially when each socioeconomic parameter has multiple variables representing it. Here we present a novel idea of discretization which is useful for several reasons. First, as shown in the book Factfulness by Hans Rosling who used a similar 4-level mapping for different stages of development of countries and regions, such a coarse mapping is easy for people to interpret and to easily compare different districts with one another. Second, it reduces the variables to a single quantity without assigning arbitrary weights to club together multiple parameters for each variable. 
 
