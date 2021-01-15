@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arpit_ADI_2011_census</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    #map {
+      width: 600px;
+      height: 450px;
+    }
+    h1 {
+      margin-left: auto;
+      font: Arial, Helvetica;
+      margin-right: auto;
+      text-align: center;
+    }
+  </style>
+
+  <style>#map { width: 800px; height: 500px; }
+    .info { padding: 6px 8px; font: 14px/16px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; }
+    .info h4 { margin: 0 0 5px; color: #777; }
+    .legend { text-align: left; line-height: 18px; color: #555; }
+    .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }
+  </style>
+
+</head>
+
+
+<body>
+<!-- The first division with id=map displays the world map with formatting as in script above -->
+<div id="map" style="width: 1000px; height: 1000px; width: 100%; align-content: center"></div>
+
+<script>
+
+  var map = L.map('map').setView([24.18,78.87], 4);
+
+  var openstreetmap = new L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        attribution: '&copy; <a href="http://openstreetmap.org/copyright"></a> contributors'});
+    openstreetmap.addTo(map);
+
+  // control that shows state info on hover.
+  // L.Control is a base class for implementing map controls.
+  // Handles positioning. All other controls extend from this class.
+  var info = L.control();
+
+  info.onAdd = function(map)
+              {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+              };
+
+  info.update = function(props)
+                {
+                  if(props)
+                  {
+                    var z1 = "</br>2001 Data not available</p>";
+                    if (props.hasOwnProperty('sum_positive'))
+                    {
+                      // alert(feature.properties.DISTRICT);
+                      z1 =""
+                      +"</br><b>ABS DIFF:</b> "+ props.Inbound_Cluster_2011.toLocaleString()
+                      +'</p>';
+                    }
+
+                    var popupContent= "<p><b>STATE: </b>"+ props.ST_NM +
+                                      "</br><b>District: </b>"+ props.DISTRICT +
+                                      "</br><b>State Census Code:</b> "+ props.ST_CEN_CD.toLocaleString() +
+                                      "</br><b>District Census Code:</b> "+ props.DT_CEN_CD.toLocaleString() +
+                                      "</br><b>censuscode:</b> "+ props.censuscode.toLocaleString()
+                                      +z1;
+                  }
+
+                  this._div.innerHTML = '<h4>Indian District Information</h4>' + (props ?
+                    '<b>' + props.DISTRICT + '</b><br />' + popupContent : 'Hover over a state');
+                };
+
+  info.addTo(map);
+
+  //This function is used to actually style the map and assign colors to result values
+  function style(feature)
+  {
+    var z1 = -1;
+    value_to_plot = feature.properties.Cluster;
+    value_to_plot2 = feature.properties.censuscode;// variable holding actual value to plot
+    var color_hex_code; //holds the value of color
+
+    if(value_to_plot == 0)
+    {
+      //color_hex_code = "#10c7cc";
+      color_hex_code = "#009900";
+    }
+    else if(value_to_plot == 1)
+    {
+      //color_hex_code = "#78af00";
+      //color_hex_code = "#FF0000";
+      color_hex_code = "#cc0000";
+    }
+    else if(value_to_plot == 2)
+    {
+      //color_hex_code = "#377432";
+      //color_hex_code = "#FFFF00";
+      color_hex_code = "#ffcc00";
+    }
+    else if(value_to_plot == 3)
+    {
+      //color_hex_code = "#065200";
+      //color_hex_code = "#00FF00";
+      color_hex_code = "#009900";
+    }
+
+    else
+    {
+      color_hex_code = "white";
+    }
+
+    return{
+      fillColor: color_hex_code,
+      fillOpacity: 0.9,
+      weight: 0.5,
+      opacity: 1,
+      border: '1px',
+      color: 'black',
+      dashArray: '0'
+    };
+  }
+
+  function highlightFeature(e)
+  {
+    var layer = e.target;
+
+    layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.7
+                  });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge)
+    {
+      layer.bringToFront();
+    }
+    info.update(layer.feature.properties);
+  }
+
+  var stateLayer;
+  function resetHighlight(e)
+  {
+    stateLayer.resetStyle(e.target);
+    info.update();
+  }
+
+  function zoomToFeature(e)
+  {
+    map.fitBounds(e.target.getBounds());
+  }
+
+  //This function might be a repetition of info.update, check needed
+  function forEachFeature(feature, layer)
+  {
+    layer.on({
+              mouseover: highlightFeature,
+              mouseout: resetHighlight,
+              // click: zoomToFeature
+            });
+
+    var z1 = "</br>2001 Data not available</p>";
+    if (feature.properties.hasOwnProperty('sum_positive'))
+    {
+      z1 = "</br><b>sum_positive:</b> "+ feature.properties.Cluster_2011.toLocaleString() +'</p>';
+    }
+
+    var popupContent= "<p><b>STATE: </b>"+ feature.properties.ST_NM +
+                      "</br><b>District: </b>"+ feature.properties.DISTRICT +
+                      "</br><b>State Census Code:</b> "+ feature.properties.ST_CEN_CD.toLocaleString() +
+                      "</br><b>District Census Code:</b> "+ feature.properties.DT_CEN_CD.toLocaleString() +
+                      "</br><b>censuscode:</b> "+ feature.properties.censuscode.toLocaleString() + '</p>';
+
+    layer.bindPopup(popupContent);
+  }
+
+  // Null variable that will hold layer. Driver code starts here
+  stateLayer = L.geoJson(null, {onEachFeature: forEachFeature, style: style});
+
+  // Enter the name of your results file here
+  $.getJSON("2_2011_census_Arpit.json", function(data) { stateLayer.addData(data); });
+
+  //Adding layer to map
+  stateLayer.addTo(map);
+  map.fitBounds(stateLayer.getBounds());
+</script>
+
+</body>
+</html>
