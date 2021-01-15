@@ -57,11 +57,11 @@ Around seven migration indicators derived from the census tale, we construct eig
 
 ### 5. Hypothesis 5: Districts with manufacturing and service industries see high inbound migration, while the districts with low and moderate industries see lower inbounds of migration.Converse is not true.
 
-### Hypothesis 6: Migrants who travel for professional reasons travel to districts with service industries.
+### 6. Hypothesis 6: Migrants who travel for professional reasons travel to districts with service industries.
  
-### Hypothesis 7: Inter state migrants tend to migrate more towards districts with manufacturing and service industry opportunities.}
+### 7. Hypothesis 7: Inter state migrants tend to migrate more towards districts with manufacturing and service industry opportunities.}
   
-### Hypothesis 8: Long term migrants migrate to districts with low level industries in contrast to short term migrants, who move to districts with service industries.
+### 8. Hypothesis 8: Long term migrants migrate to districts with low level industries in contrast to short term migrants, who move to districts with service industries.
 
 
 
