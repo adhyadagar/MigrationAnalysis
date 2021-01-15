@@ -23,11 +23,11 @@ Migration is often driven by the search for better livelihoods and new opportuni
 This study is a continuation to the research done by Goswami et al.and uses the results given in the paper.
     
 __In this paper, the intent has been to complete the following tasks:__ 
-        - To download data from web to create a comprehensive table of variables based on Census 2001 & Census 2011 for analysis.
-        - To discretize the continuous variables by using clustering algorithms with an aim to keep the labels consistent over the two Census and to enable a simple                  comparison of the migration states over the years.
-        - To study the pattern of Census 2011 and finally use statistical analysis to formulate hypothesis based on observed patterns and test them using statistical tests.
-        - To study association between migration and socioeconomic development in Indian districts
-        - To seek answers to questions like:
+1. To download data from web to create a comprehensive table of variables based on Census 2001 & Census 2011 for analysis.
+2. To discretize the continuous variables by using clustering algorithms with an aim to keep the labels consistent over the two Census and to enable a simple                  comparison of the migration states over the years.
+3. To study the pattern of Census 2011 and finally use statistical analysis to formulate hypothesis based on observed patterns and test them using statistical tests.
+4. To study association between migration and socioeconomic development in Indian districts
+5. To seek answers to questions like:
             – Does migration lead to social development or vice versa?
             – Do men and women migrate in a similar way?
             – What are the prominent migration hubs in India and what causes this?
